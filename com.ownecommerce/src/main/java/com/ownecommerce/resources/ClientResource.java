@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ownecommerce.entities.Client;
@@ -18,15 +19,19 @@ import com.ownecommerce.entities.Client;
 @RestController
 @RequestMapping(value="/clients")
 public class ClientResource {
+	
+	@GetMapping
+	public ResponseEntity<List<Client>> findAll(){
+		return null;
+	}
 
 	@GetMapping("/{id}")
 	public Client findById(@PathVariable("id") Integer id){
 		return null;
 	}
 	
-	@GetMapping
-	public ResponseEntity<List<Client>> findAll(){
-		return null;
+	@PostMapping
+	public void addClients(@RequestBody List<Client> newClients) {
 	}
 	
 	@PostMapping
@@ -34,8 +39,12 @@ public class ClientResource {
 	}
 	
 	@DeleteMapping
-	public void deleteClient(Client client) {
+	public void deleteClients(Client client) {
 		
+	}
+
+	@DeleteMapping("/{id}")
+	public void deleteClientById(@RequestParam("id") Client client) {
 	}
 	
 	@PutMapping
